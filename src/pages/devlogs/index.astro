@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const devlogs = await getCollection('devlogs');
+
+devlogs.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Devlogs">
+    <h1>Devlogs</h1>
+
+    <p>
+        Registros sobre meus projetos, aprendizados e jornada de desenvolvimento.
+    </p>
+
+    <ul>
+        {
+            devlogs.map((devlog) => (
+                <li>
+                    <article>
+                        <h2>
+                            <a href={`/devlogs/${devlog.id}`}>
+                                {devlog.data.title}
+                            </a>
+                        </h2>
+
+                        <p>{devlog.data.description}</p>
+
+                        <time datetime={devlog.data.date.toISOString()}>
+                            {devlog.data.date.toLocaleDateString('pt-BR')}
+                        </time>
+                    </article>
+                </li>
+            ))
+        }
+    </ul>
+</BaseLayout>
