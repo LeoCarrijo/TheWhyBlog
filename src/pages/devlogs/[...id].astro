@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
     const devlogs = await getCollection('devlogs');
@@ -18,42 +19,18 @@ const { devlog } = Astro.props;
 const { Content } = await render(devlog);
 ---
 
-<html lang="pt-BR">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-
-        <title>{devlog.data.title} | TheWhyBlog</title>
-    </head>
-
-    <body>
+<BaseLayout title={devlog.data.title}>
+    <article>
         <header>
-            <h1>TheWhyBlog</h1>
+            <h1>{devlog.data.title}</h1>
 
-            <nav>
-                <a href="/">Início</a>
-                <a href="/devlogs">Devlogs</a>
-            </nav>
+            <p>{devlog.data.description}</p>
+
+            <time datetime={devlog.data.date.toISOString()}>
+                {devlog.data.date.toLocaleDateString('pt-BR')}
+            </time>
         </header>
 
-        <main>
-            <article>
-                <header>
-                    <h1>{devlog.data.title}</h1>
-
-                    <p>{devlog.data.description}</p>
-
-                    <time datetime={devlog.data.date.toISOString()}>
-                        {devlog.data.date.toLocaleDateString('pt-BR')}
-                    </time>
-                </header>
-
-                <Content />
-            </article>
-        </main>
-
-        <footer>
-            <p>TheWhyBlog — Minha jornada através de projetos e aprendizado.</p>
-        </footer>
-    </body>
-</html>
+        <Content />
+    </article>
+</BaseLayout>

@@ -1,56 +1,31 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="pt-BR">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>TheWhyBlog</title>
-	</head>
+<BaseLayout title="Início">
+	<section>
+		<h2>Por que este blog existe?</h2>
 
-	<body>
-		<header>
-			<h1>TheWhyBlog</h1>
+		<p>
+			O TheWhyBlog é um espaço para documentar minha jornada no
+			desenvolvimento de jogos, projetos pessoais e aprendizado.
+		</p>
 
-			<nav>
-				<a href="/">Início</a>
-				<a href="/devlogs">Devlogs</a>
-			</nav>
-		</header>
+		<p>
+			A ideia é registrar não apenas os resultados, mas também o
+			processo: as decisões tomadas, os problemas encontrados e
+			o que aprendi durante o desenvolvimento.
+		</p>
+	</section>
 
-		<main>
-			<section>
-				<h2>Por que este blog existe?</h2>
+	<section>
+		<h2>Acompanhe os Devlogs</h2>
 
-				<p>
-					O TheWhyBlog é um espaço para documentar minha jornada no
-					desenvolvimento de jogos, projetos pessoais e aprendizado.
-				</p>
+		<p>
+			Aqui serão publicados registros sobre o desenvolvimento dos
+			meus projetos.
+		</p>
 
-				<p>
-					A ideia é registrar não apenas os resultados, mas também o
-					processo: as decisões tomadas, os problemas encontrados e o
-					que aprendi durante o desenvolvimento.
-				</p>
-			</section>
-
-			<section>
-				<h2>Acompanhe os Devlogs</h2>
-
-				<p>
-					Aqui serão publicados registros sobre o desenvolvimento dos
-					meus projetos.
-				</p>
-
-				<a href="/devlogs">Ver todos os Devlogs</a>
-			</section>
-		</main>
-
-		<footer>
-			<p>TheWhyBlog — Minha jornada através de projetos e aprendizado.</p>
-		</footer>
-	</body>
-</html>
+		<a href="/devlogs">Ver todos os Devlogs</a>
+	</section>
+</BaseLayout>
